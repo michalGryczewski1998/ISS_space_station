@@ -1,7 +1,12 @@
+using ISS_space_station.Interfaces;
+using ISS_space_station.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDownload, DownloadServices>();
+builder.Services.AddHostedService<SpaceHostedService>();
 
 var app = builder.Build();
 

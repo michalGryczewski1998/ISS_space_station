@@ -1,14 +1,21 @@
-﻿@{
+﻿@model ISS_space_station.Models.IIS.SpaceStationDetails
+@{
     ViewData["Title"] = "IIS position";
 }
-
+<form>
+    <label for="statusField">Długość i szerokość geograficzna:</label>
+    <input type="text" id="statusField" value="@((Model.Latitude).ToString().Replace(',','.'))" readonly />
+    <input type="text" id="statusField" value="@((Model.Longitude).ToString().Replace(',','.'))" readonly />
+    <label for="statusField">Szybkość</label>
+    <input type="text" id="statusField" value="@((Model.Velocity).ToString().Replace(',','.')) km" readonly />
+</form>
 <div id="map" style="width: 100%; height: 800px;">
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('map').setView([@((Model.Latitude).ToString().Replace(',', '.')), @((Model.Longitude).ToString().Replace(',', '.'))], 4);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        }).addTo(map)
 
         // L.marker([51.505, -0.09]).addTo(map)
         //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
