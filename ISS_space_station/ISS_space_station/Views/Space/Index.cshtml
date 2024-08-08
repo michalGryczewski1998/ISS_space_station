@@ -17,8 +17,10 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map)
 
-        // L.marker([51.505, -0.09]).addTo(map)
-        //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        //     .openPopup();
+        // Dodaje marker/pineskę na szerokosc i dlugosc geo
+        var marker = L.marker([@((Model.Latitude).ToString().Replace(',', '.')), @((Model.Longitude).ToString().Replace(',', '.'))]).addTo(map);
+
+        // Dodaje podpis do pineski
+        marker.bindPopup("<b>Aktualne położenie ISS</b>").openPopup();
     </script>
 </div>
